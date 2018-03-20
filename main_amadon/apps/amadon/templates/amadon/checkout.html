@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Amadon_Checkout</title>
+</head>
+<body>
+    <div>
+        <h1>Thank you for your business!</h1>
+        <p>We charged your credit card {{total}}.</p>
+        <p>You have ordered {{request.session.atotal}} items so far and spent {{request.session.ttotal}} with Amadon.com</p>
+        <form action="amadon/returned" method="post">
+            {% csrf_token %}
+            <input id="button" type="submit" value="Go Back">
+        </form>
+    </div>
+</body>
+</html>

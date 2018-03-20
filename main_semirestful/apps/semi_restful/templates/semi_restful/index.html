@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Users</title>
+  <!-- <link rel="stylesheet" href="static/style.css"> -->
+</head>
+<body>
+  {% for userx in user: %}
+    <h1>User: {{ userx.id }}</h1>
+    <p>Full Name: {{ userx.full_name }}</p>
+    <p>Email: {{ userx.email }}</p>
+    <p>Created at: {{ userx.created_at }}</p>
+    <a href="{%url 'show' id={{userx.id}} %}">Show</a> | <a href="{%url 'editpage' id={{userx.id}} %}">Edit</a> | 
+    <form action="{%url 'destroy' id={{userx.id}} %}" method='post'>
+        {% csrf_token %}
+        <label><input type="submit" value="Delete"></label>
+    </form>
+  {% endfor %}
+  <h1>Register</h1>
+  <form action="{%url 'index' %}" method='POST'>
+    {% csrf_token %}
+    <input type="submit" value="Register">
+  </form>
+</body>
+</html>
